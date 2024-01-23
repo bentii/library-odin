@@ -13,7 +13,7 @@
         <div id="add-button" onclick = 'openInput()'>+</div>
     </header>
     <main id="main">
-        <dialog>
+        <dialog id="add">
             <div id="form">
                 <form id="forms">
                     <input type="text" placeholder="Title" id="book-title">
@@ -25,7 +25,24 @@
                     <label for="book-read" id="book-read-label">Read</label>
                     <input type="checkbox" name="read" id="book-read">
             
-                    <input type="button" value="+" onclick="createBook(); createBox(); closeInput()" id="add-book-button">
+                    <input type="button" value="+" onclick="createBook();  closeInput()" id="add-book-button">
+                    <input type="button" onclick="closeInput()" value="Cancel" id="cancel-button">
+                </form>
+            </div>
+        </dialog>
+        <dialog id="edit">
+            <div id="form">
+                <form id="forms">
+                    <input type="text" id="book-title2">
+    
+                    <input type="text" id="book-author2">
+          
+                    <input type="number" id="book-pages2">
+          
+                    <label for="book-read" id="book-read-label">Read</label>
+                    <input type="checkbox" name="read" id="book-read2">
+            
+                    <input type="button" value="Edit" onclick="editBook2();  closeInput()" id="add-book-button">
                     <input type="button" onclick="closeInput()" value="Cancel" id="cancel-button">
                 </form>
             </div>

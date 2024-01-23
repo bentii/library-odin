@@ -15,30 +15,30 @@ header {
 footer {
     background-color: rgb(230, 230, 230);
     width: 100vw;
-    position: fixed;
     bottom: 0;
     height: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2vh;
 }
 #header-title {
     position: absolute;
     left: 50%;
     transform:translateX(-50%);
-    font-size: 5rem;
+    font-size: 20vh;
 }
 #add-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5rem;
+    font-size: 5vw;
     flex: 0 1 auto;
     margin-left: auto;
-    height: 5rem;
-    width: 5rem;
+    height: 10vh;
+    width: 5vw;
     cursor: pointer;
-    border: 2px solid black;
+    border: 0.5vh solid black;
     margin-right: 10%;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -67,15 +67,49 @@ input {
     cursor: pointer;
 }
 main {
-    height: 80vh;
-    width: 100%;
+    min-height: 80vh;
+    min-width: 100%;
     display: flex;
-    padding: 5px;
+    padding: 0.5vw;
     box-sizing: border-box;
-    border: 2px solid red;
+    flex-wrap: wrap;
+    gap: 0.5vw;
 }
-#bookbox {
-    width: 20%;
-    height: 40vh;
-    background-color: aqua;
+.bookbox {
+    width: 16.2%;
+    height: 38vh;
+    text-align: center;
+    box-sizing: border-box;
+    display: grid;
+    overflow: auto;
+    padding: 0.5rem;
+}
+
+.bookbox p {
+    font-size: 3vh;
+}
+
+.bookbox p > p{
+    text-align: center;
+    font-size: 4vh;
+}
+
+.green {
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 199, 0);
+}
+
+.red {
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+button {
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 0, 0);
+    max-height: 4vh;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    font-size: 2vh;
 }
