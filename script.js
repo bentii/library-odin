@@ -1,74 +1,83 @@
-const myLibrary = [];
-let x = 0;
-let bookId = 0;
-let boxid;
+class Library {
+  constructor() {
+    this.myLibrary = [];
+    this.bookId = 0;
+    this.x = 0;
+    this.boxid;
+  }
 
-function openInput(){
-    document.getElementById('add').showModal();
-}
-function closeInput(){
-    document.getElementById('add').close();
-    document.getElementById('edit').close();
-}
+  openInput() {
+    document.getElementById("add").showModal();
+  }
 
-function createBook() {
+  closeInput() {
+    document.getElementById("add").close();
+    document.getElementById("edit").close();
+  }
 
-    let title = document.getElementById('book-title').value;
-    let author = document.getElementById('book-author').value;
-    let pages = document.getElementById('book-pages').value;
-    let read = document.querySelector('#book-read').checked;
-    let id = bookId;
+  createBook() {
+    let title = document.getElementById("book-title").value;
+    let author = document.getElementById("book-author").value;
+    let pages = document.getElementById("book-pages").value;
+    let read = document.querySelector("#book-read").checked;
+    let id = this.bookId;
 
-    function Book(title, author, pages, read, id) {
+    class Book {
+      constructor(title, author, pages, read, id) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
         this.id = id;
+      }
     }
 
-    myLibrary[x] = new Book(title, author, pages, read, id);
-    console.log(myLibrary);
+    this.myLibrary[this.x] = new Book(title, author, pages, read, id);
+    console.log(this.myLibrary);
 
-    const container = document.getElementById('main');
-    const newBox = document.createElement('div');
-    const titleDiv = document.createElement('p');
-    const authorDiv = document.createElement('p');
-    const pagesDiv = document.createElement('p');
-    const titleText = document.createElement('p');
-    const authorText = document.createElement('p');
-    const pagesText = document.createElement('p');
-    const buttonEdit = document.createElement('button');
-    const buttonDelete = document.createElement('button');
+    const container = document.getElementById("main");
+    const newBox = document.createElement("div");
+    const titleDiv = document.createElement("p");
+    const authorDiv = document.createElement("p");
+    const pagesDiv = document.createElement("p");
+    const titleText = document.createElement("p");
+    const authorText = document.createElement("p");
+    const pagesText = document.createElement("p");
+    const buttonEdit = document.createElement("button");
+    const buttonDelete = document.createElement("button");
 
-    titleText.setAttribute('id',`titleDiv${x}`);
-    authorText.setAttribute('id',`authorDiv${x}`);
-    pagesText.setAttribute('id',`pagesDiv${x}`);
+    titleText.setAttribute("id", `titleDiv${this.x}`);
+    authorText.setAttribute("id", `authorDiv${this.x}`);
+    pagesText.setAttribute("id", `pagesDiv${this.x}`);
 
     buttonEdit.textContent = "Edit";
     buttonDelete.textContent = "Delete";
 
-    buttonEdit.addEventListener('click', function editBook(e) {
-        document.getElementById('edit').showModal();
-        boxid = e.target.parentElement.id;
+    buttonEdit.addEventListener("click", (e) => {
+      document.getElementById("edit").showModal();
+      this.boxid = e.target.parentElement.id;
 
-        document.getElementById('book-title2').value = myLibrary[boxid].title;
-        document.getElementById('book-author2').value = myLibrary[boxid].author;
-        document.getElementById('book-pages2').value = myLibrary[boxid].pages;
-        document.getElementById('book-read2').checked = myLibrary[boxid].read;
+      document.getElementById("book-title2").value =
+        this.myLibrary[this.boxid].title;
+      document.getElementById("book-author2").value =
+        this.myLibrary[this.boxid].author;
+      document.getElementById("book-pages2").value =
+        this.myLibrary[this.boxid].pages;
+      document.getElementById("book-read2").checked =
+        this.myLibrary[this.boxid].read;
     });
 
-    buttonDelete.addEventListener('click', function deleteBook(e) {
-        e.target.parentElement.remove();
-        delete myLibrary[e.target.parentElement.id];
+    buttonDelete.addEventListener("click", (e) => {
+      e.target.parentElement.remove();
+      delete this.myLibrary[e.target.parentElement.id];
     });
 
-    newBox.setAttribute('id', x);
-    newBox.classList.add('bookbox');
-    if(read == true) {
-        newBox.classList.add('green');
+    newBox.setAttribute("id", this.x);
+    newBox.classList.add("bookbox");
+    if (read == true) {
+      newBox.classList.add("green");
     } else {
-        newBox.classList.add('red');
+      newBox.classList.add("red");
     }
 
     container.appendChild(newBox);
@@ -91,30 +100,29 @@ function createBook() {
     newBox.appendChild(buttonEdit);
     newBox.appendChild(buttonDelete);
 
-    bookId++;
-    x++;
+    this.bookId++;
+    this.x++;
 
-    document.getElementById('forms').reset();
-}
+    document.getElementById("forms").reset();
+  }
 
-function editBook2(){
-    let title = document.getElementById('book-title2').value;
-    let author = document.getElementById('book-author2').value;
-    let pages = document.getElementById('book-pages2').value;
-    let read = document.querySelector('#book-read2').checked;
-    const titleText =  document.getElementById(`titleDiv${boxid}`);
-    const authorText = document.getElementById(`authorDiv${boxid}`)
-    const pagesText = document.getElementById(`pagesDiv${boxid}`)
-    const newBox = document.getElementById(boxid);
+  editBook2() {
+    let title = document.getElementById("book-title2").value;
+    let author = document.getElementById("book-author2").value;
+    let pages = document.getElementById("book-pages2").value;
+    let read = document.querySelector("#book-read2").checked;
+    const titleText = document.getElementById(`titleDiv${this.boxid}`);
+    const authorText = document.getElementById(`authorDiv${this.boxid}`);
+    const pagesText = document.getElementById(`pagesDiv${this.boxid}`);
+    const newBox = document.getElementById(this.boxid);
 
-    if(read == true) {
-        newBox.classList.remove('red');
-        newBox.classList.add('green');
+    if (read == true) {
+      newBox.classList.remove("red");
+      newBox.classList.add("green");
     } else {
-        newBox.classList.remove('red');
-        newBox.classList.add('red');
+      newBox.classList.remove("red");
+      newBox.classList.add("red");
     }
-
 
     titleText.textContent = title;
 
@@ -122,14 +130,11 @@ function editBook2(){
 
     pagesText.textContent = pages;
 
-    function Book(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-    }
-    myLibrary[boxid] = {...myLibrary[boxid], title, author, pages, read};
-
-    console.log(myLibrary[boxid]);
-
+    this.myLibrary[this.boxid].title = title;
+    this.myLibrary[this.boxid].author = author;
+    this.myLibrary[this.boxid].pages = pages;
+    this.myLibrary[this.boxid].read = read;
+  }
 }
+
+const library = new Library();
